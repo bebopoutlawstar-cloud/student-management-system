@@ -4,6 +4,9 @@ CREATE DATABASE IF NOT EXISTS school_db;
 -- 2. Select it
 USE school_db;
 
+-- Start fresh: delete the old table if there is one
+DROP TABLE IF EXISTS students;
+
 -- 3. Create the students table
 CREATE TABLE IF NOT EXISTS students (
     id     INT AUTO_INCREMENT PRIMARY KEY,
@@ -24,11 +27,3 @@ INSERT INTO students (name, email, age, course) VALUES
 -- 5. Show what we added
 SELECT * FROM students;
 
--- 2. Select it
-USE school_db;
-
--- Start fresh: delete the old table if there is one
-DROP TABLE IF EXISTS students;
-
--- 3. Create the students table
-CREATE TABLE IF NOT EXISTS students (
