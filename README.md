@@ -1,10 +1,11 @@
+
 # Student Management System
 
 A full-stack CRUD web app for managing student records, built with **vanilla JavaScript, Node.js, Express and MySQL**. No frontend framework: every action is a plain `fetch()` call to a REST API I built.
 
 Styled with a cyberpunk look carried over from my other projects: neon cyan and volt-yellow accents, slanted Persona-style buttons, and a flickering glitch title.
 
-![Screenshot](screenshot.png)
+![Screenshot](<img width="1846" height="1179" alt="student magament site" src="https://github.com/user-attachments/assets/a4c1cdf8-2f2c-4d4a-926f-3e0502771169" />)
 
 ## Features
 
