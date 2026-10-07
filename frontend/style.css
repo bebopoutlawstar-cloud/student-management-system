@@ -1,0 +1,342 @@
+/* =========================================================
+   Student Management System
+   NightLane backlog look + a touch of GIFHUNT horror
+   ========================================================= */
+
+:root {
+  /* NightLane */
+  --night: #07041a;
+  --panel: rgba(7, 4, 26, 0.75);
+  --plum: #2a1b4a;
+  --line: #3b2d80;
+  --cyan: #00f0ff;
+  --mag: #c65aae;
+  --volt: #f3ff3a;
+  --white: #f4f7ff;
+  --muted: #a9a3d6;
+  --term: #7cff6b;
+
+  /* GIFHUNT */
+  --blood: #b3000c;
+  --blood-bright: #ff1a2a;
+
+  /* Fonts */
+  --num: "Anton", Impact, sans-serif;
+  --tech: "Orbitron", "Arial Black", sans-serif;
+  --body: "Rajdhani", "Arial Narrow", system-ui, sans-serif;
+  --type: "Special Elite", "Courier New", monospace;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  min-height: 100vh;
+  font-family: var(--body);
+  font-size: 17px;
+  font-weight: 600;
+  color: var(--white);
+  background-color: var(--night);
+  background-image:
+    radial-gradient(circle at 10% 0%, rgba(0, 240, 255, 0.12), transparent 40%),
+    radial-gradient(circle at 90% 100%, rgba(198, 90, 174, 0.15), transparent 45%);
+  background-attachment: fixed;
+}
+
+/* Faint CRT scanlines over everything */
+body::before {
+  content: "";
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+  background: repeating-linear-gradient(
+    to bottom,
+    rgba(255, 255, 255, 0.025) 0px,
+    rgba(255, 255, 255, 0.025) 1px,
+    transparent 1px,
+    transparent 3px
+  );
+}
+
+.container {
+  max-width: 960px;
+  margin: 0 auto;
+  padding: 40px 16px;
+}
+
+/* ---------- Header ---------- */
+header {
+  text-align: center;
+  margin-bottom: 28px;
+}
+
+h1 {
+  margin: 0;
+  font-family: var(--num);
+  font-weight: 400;
+  font-size: clamp(2rem, 6vw, 3.2rem);
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  color: var(--white);
+  text-shadow:
+    0 0 14px rgba(0, 240, 255, 0.55),
+    3px 3px 0 var(--blood);
+  animation: flicker 6s infinite;
+}
+
+.subtitle {
+  margin: 8px 0 0;
+  font-family: var(--type);
+  color: var(--muted);
+  letter-spacing: 1px;
+}
+
+/* GIFHUNT's flicker */
+@keyframes flicker {
+  0%, 92%, 100% { opacity: 1; }
+  93% { opacity: 0.3; }
+  94% { opacity: 1; }
+  96% { opacity: 0.5; }
+  97% { opacity: 1; }
+}
+
+/* ---------- Cards ---------- */
+.card {
+  position: relative;
+  background: var(--panel);
+  border: 2px solid var(--line);
+  padding: 22px;
+  margin-bottom: 22px;
+  box-shadow: 0 0 24px rgba(59, 45, 128, 0.35);
+}
+
+.card::before {
+  content: "";
+  position: absolute;
+  top: -2px;
+  left: -2px;
+  width: 90px;
+  height: 4px;
+  background: var(--cyan);
+  box-shadow: 0 0 10px var(--cyan);
+}
+
+h2 {
+  margin: 0 0 16px;
+  font-family: var(--tech);
+  font-weight: 900;
+  font-size: 1rem;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  color: var(--volt);
+}
+
+/* ---------- Form ---------- */
+.form-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 16px;
+}
+
+label {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  font-family: var(--tech);
+  font-weight: 700;
+  font-size: 0.7rem;
+  letter-spacing: 1.5px;
+  text-transform: uppercase;
+  color: var(--muted);
+}
+
+input,
+select {
+  padding: 11px 12px;
+  font-family: var(--body);
+  font-size: 1.05rem;
+  font-weight: 600;
+  color: var(--white);
+  background: rgba(0, 0, 0, 0.35);
+  border: 2px solid var(--line);
+  border-radius: 0;
+}
+
+input::placeholder {
+  color: rgba(169, 163, 214, 0.55);
+}
+
+select option {
+  background: var(--night);
+  color: var(--white);
+}
+
+input:focus,
+select:focus {
+  outline: none;
+  border-color: var(--cyan);
+  box-shadow: 0 0 10px rgba(0, 240, 255, 0.45);
+}
+
+.form-actions {
+  margin-top: 18px;
+  display: flex;
+  gap: 12px;
+}
+
+/* ---------- Buttons ---------- */
+.btn {
+  border: none;
+  padding: 11px 22px;
+  font-family: var(--tech);
+  font-weight: 900;
+  font-size: 0.8rem;
+  letter-spacing: 1.5px;
+  text-transform: uppercase;
+  cursor: pointer;
+  clip-path: polygon(10px 0, 100% 0, calc(100% - 10px) 100%, 0 100%);
+  transition: transform 0.1s, filter 0.15s;
+}
+
+.btn:hover {
+  filter: brightness(1.15);
+  transform: translateY(-1px);
+}
+
+.btn:active {
+  transform: translateY(1px);
+}
+
+.btn-primary {
+  background: var(--volt);
+  color: var(--night);
+}
+
+.btn-secondary {
+  background: var(--plum);
+  color: var(--white);
+}
+
+.btn-small {
+  padding: 7px 14px;
+  font-size: 0.65rem;
+}
+
+.btn-edit {
+  background: var(--cyan);
+  color: var(--night);
+}
+
+.btn-delete {
+  background: var(--blood);
+  color: var(--white);
+}
+
+.btn-delete:hover {
+  background: var(--blood-bright);
+}
+
+.hidden {
+  display: none;
+}
+
+/* ---------- Messages ---------- */
+.message {
+  margin: 14px 0 0;
+  min-height: 1.3em;
+  font-family: var(--type);
+  letter-spacing: 0.5px;
+}
+
+.message.success {
+  color: var(--term);
+  text-shadow: 0 0 8px rgba(124, 255, 107, 0.5);
+}
+
+.message.error {
+  color: var(--blood-bright);
+  text-shadow: 0 0 8px rgba(255, 26, 42, 0.6);
+}
+
+/* ---------- Search + filter ---------- */
+.toolbar {
+  display: flex;
+  gap: 12px;
+  margin-bottom: 18px;
+}
+
+.toolbar input {
+  flex: 1;
+}
+
+/* ---------- Table ---------- */
+.table-wrap {
+  overflow-x: auto;
+}
+
+table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+th,
+td {
+  text-align: left;
+  padding: 12px 10px;
+  border-bottom: 1px solid rgba(59, 45, 128, 0.7);
+}
+
+th {
+  font-family: var(--tech);
+  font-weight: 700;
+  font-size: 0.65rem;
+  letter-spacing: 1.5px;
+  text-transform: uppercase;
+  color: var(--cyan);
+  border-bottom: 2px solid var(--line);
+}
+
+/* ID column: big yellow numbers, like the backlog stats */
+td:first-child {
+  font-family: var(--num);
+  font-size: 1.2rem;
+  color: var(--volt);
+}
+
+tbody tr:hover {
+  background: rgba(0, 240, 255, 0.06);
+}
+
+.actions {
+  white-space: nowrap;
+}
+
+.actions .btn + .btn {
+  margin-left: 6px;
+}
+
+.empty {
+  text-align: center;
+  padding: 28px;
+  font-family: var(--type);
+  color: var(--muted);
+}
+
+td.empty:first-child {
+  font-family: var(--type);
+  font-size: 1rem;
+  color: var(--muted);
+}
+
+/* ---------- Phones ---------- */
+@media (max-width: 640px) {
+  .form-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .toolbar {
+    flex-direction: column;
+  }
+}
