@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Student Management System</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <div class="container">
+    <header>
+      <h1>Student Management System</h1>
+      <p class="subtitle">Add, edit, search and filter students</p>
+    </header>
+
+    <!-- Form: used for BOTH adding and editing -->
+    <section class="card">
+      <h2 id="formTitle">Add Student</h2>
+      <form id="studentForm" novalidate>
+        <input type="hidden" id="studentId" />
+
+        <div class="form-grid">
+          <label>
+            Name
+            <input type="text" id="name" placeholder="e.g. John Smith" />
+          </label>
+          <label>
+            Email
+            <input type="email" id="email" placeholder="e.g. john@gmail.com" />
+          </label>
+          <label>
+            Age
+            <input type="number" id="age" min="1" placeholder="e.g. 22" />
+          </label>
+          <label>
+            Course
+            <select id="course">
+              <option value="">Select a course</option>
+              <option value="React">React</option>
+              <option value="Node.js">Node.js</option>
+              <option value="Python">Python</option>
+              <option value="JavaScript">JavaScript</option>
+              <option value="Next.js">Next.js</option>
+            </select>
+          </label>
+        </div>
+
+        <div class="form-actions">
+          <button type="submit" id="submitBtn" class="btn btn-primary">Add Student</button>
+          <button type="button" id="cancelBtn" class="btn btn-secondary hidden">Cancel</button>
+        </div>
+      </form>
+      <p id="message" class="message"></p>
+    </section>
+
+    <!-- Search, filter and the table -->
+    <section class="card">
+      <div class="toolbar">
+        <input type="text" id="searchInput" placeholder="Search students..." />
+        <select id="courseFilter">
+          <option value="">All Courses</option>
+          <option value="React">React</option>
+          <option value="Node.js">Node.js</option>
+          <option value="Python">Python</option>
+          <option value="JavaScript">JavaScript</option>
+          <option value="Next.js">Next.js</option>
+        </select>
+      </div>
+
+      <div class="table-wrap">
+        <table>
+          <thead>
+            <tr>
+              <th>ID</th>
+              <th>Name</th>
+              <th>Email</th>
+              <th>Age</th>
+              <th>Course</th>
+              <th>Actions</th>
+            </tr>
+          </thead>
+          <tbody id="studentTableBody">
+            <!-- script.js fills this in -->
+          </tbody>
+        </table>
+      </div>
+    </section>
+  </div>
+
+  <script src="script.js"></script>
+</body>
+</html>
